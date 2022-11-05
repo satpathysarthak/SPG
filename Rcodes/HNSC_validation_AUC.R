@@ -1,4 +1,4 @@
-### AUC for HNSC new data
+### Calculates AUC for HNSC validation data
 library(data.table)
 library(survivalROC)
 setwd('/home/sarthak/Documents/projects/MKlab')

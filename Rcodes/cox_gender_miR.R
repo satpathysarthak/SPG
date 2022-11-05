@@ -1,4 +1,4 @@
-## Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
+##Script automated for miR gender Cox proportional regression
 rm(list = ls())
 args<-commandArgs(TRUE)
 print(args)
@@ -6,38 +6,40 @@ setwd("/media/sarthak/gender_prognosis/")
 library(data.table)
 library(stringr)
 #### Input & Output file names ####
-tumor_file = str_c("/media/sarthak/gender_prognosis/Tumor/",args[1],".tab")
+tumor_file = str_c("/media/sarthak/gender_prognosis/miR/",args[1],"_miRNA.txt")
 clinical_file <- str_c("/media/sarthak/gender_prognosis/Clinical/processed/",args[1],"_pro.tab")
-output_file_est <- str_c("/media/sarthak/gender_prognosis/cox_regression/gender/",args[1],"_est.tab")
-output_file_int <- str_c("/media/sarthak/gender_prognosis/cox_regression/gender/",args[1],"_int.tab")
+output_file_est <- str_c("/media/sarthak/gender_prognosis/cox_regression/miR_gender/",args[1],"_est.tab")
+output_file_int <- str_c("/media/sarthak/gender_prognosis/cox_regression/miR_gender/",args[1],"_int.tab")
+output_dir <- "/media/sarthak/gender_prognosis/plots/20200812_exploratory_miR/"
+
 #####################
 
-##Initialising Tumor Dataset ##
-tum <- read.table(file = tumor_file,  sep = '\t', header = TRUE)
-length_dim <- nrow(tum)
-width_dim <- ncol(tum)
-median_tum <- vector()
+tum <- read.delim(tumor_file,sep = '\t', header = TRUE)
+#dim(tum)
+length_dim <- dim(tum)[1]
+width_dim <- dim(tum)[2]
+#For loop to calculate the median and store as a covariate in the gene exp dataset
 for (i in 1:length_dim)#Till the last gene entry
 {
-   median_tum[i] <- median(as.matrix(tum[i,]))#loop is run only till the last patient entry
-   #if the covariates are not mentioned the loop is not functional after the 1st iteration
-   if(i%%5000==0){
-     print(i)
-   }
+  tum$median[i] <- median(as.numeric(tum[i,c(2:width_dim)]))#loop is run only till the last patient entry
+  #if the covariates are not mentioned the loop is not functional after the 1st iteration
 }
-tum$median <- median_tum
 tum <- subset(tum, tum$median >1)#filtering the ones with more than 1FPKM
-tum$median = NULL
-median_tum <- NULL
-t_row <- rownames(tum)
-t_col <- colnames(tum)
-tum <- transpose(tum)
-rownames(tum) <- t_col
-colnames(tum) <- t_row
-#tum <- as.data.frame(tum)
-tum$ID <- rownames(tum)
-tum$ID <- sub(".*(\\d+{4}).*$", "\\1", tum$ID)
-
+tum$median <- NULL
+tum <- t(tum) #transposing the dataframe to merge with Cliniical dataset
+#by default the transpose function returns a matrix; Reverting to a data frame
+tum <- as.data.frame(tum)
+tum <- unique(tum)
+#rownames(tum) <- sub(".*(\\d+{4}).*$", "\\1", rownames(tum))#rowname was in the format X0326
+library(dplyr)
+library(stringr)
+tum <- tibble::rownames_to_column(tum, var = "ID")#assigning the ID as a covariate(later used to merge the data frames)
+type <- sapply(strsplit(as.character(tum$ID), "\\."), `[`, 4)
+tum <- tum[type == "01A",]
+tum$type = NULL
+tum$ID <- sapply(strsplit(as.character(tum$ID), "\\."), `[`, 3)
+tum <- unique(tum)
+#Reading the Clinical data set
 #####initialising Sample Dataset#####
 sample <- fread(clinical_file)
 sample <- unique.data.frame(sample)
@@ -58,6 +60,7 @@ gen_i <- grep("^gender", colnames(data))
 age_i <- grep("^age", colnames(data))
 low <- ncol(sample) + 1
 high <- ncol(data)
+colnames(data)[low:high] <- gsub('\\.', '-', colnames(data)[low:high])
 df_est <- data.frame()
 df_int <- data.frame()
 for (i in low:high)#: range of genes in the data(merged dataframe)
@@ -96,5 +99,14 @@ for (i in low:high)#: range of genes in the data(merged dataframe)
 }
 write.table(df_est, output_file_est, append = FALSE, col.names =TRUE,row.names = FALSE, quote = FALSE, sep='\t')
 write.table(df_int, output_file_int, append = FALSE, col.names =TRUE,row.names = FALSE, quote = FALSE, sep='\t')
+gender_plot <- str_c(output_dir,args[1],"_gender_miR.jpeg")
+age_plot <- str_c(output_dir,args[1],"_age_miR.jpeg")
+jpeg(filename = gender_plot)
+hist(sample$gender,main=str_c("gender_",args[1]),xlab="Gender")
+dev.off()
+jpeg(filename = age_plot)
+hist(sample$age,main=str_c("age_",args[1]),xlab="Age(in yrs")
+dev.off()
+
 warnings()
 rm(list = ls())

@@ -1,4 +1,4 @@
-## FDR Filter to get regression results which qualify the mean absolute cutoff and FDR 0.20
+## FDR Filter to get regression results which qualify the mean absolute cutoff and FDR 0.10. Plot the changes. 
 library(data.table)
 library(stringr)
 setwd("/home/workstation/Documents/Sarthak/gender_prognosis")

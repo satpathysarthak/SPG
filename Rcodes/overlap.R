@@ -1,4 +1,4 @@
-## overlap 
+## Calculating overlap with X, Y chromosome; gtex (tissue specific); sex-biased genes 
 
 
 # chromosome X Y
