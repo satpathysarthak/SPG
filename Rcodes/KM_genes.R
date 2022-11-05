@@ -1,4 +1,4 @@
-## KM plot superstar genes expession
+## KM plot specific genes
 list_genes = c("ENSG00000155850.7","ENSG00000172493.19","ENSG00000158711.12")
 library(ggplot2)
 args<-"HNSC"

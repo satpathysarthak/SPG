@@ -1,4 +1,4 @@
-### Validating ressssssults on CGGA data 
+### Validating  gene signature model results on CGGA data 
 rm(list = ls())
 
 library(data.table)

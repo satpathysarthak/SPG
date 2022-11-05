@@ -1,4 +1,5 @@
-## Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
+# Heatmap of gene expression for genes from Survial Analysis
+
 rm(list= ls())
 args<-commandArgs(TRUE)
 print(args)

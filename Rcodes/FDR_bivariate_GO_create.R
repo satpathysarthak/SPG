@@ -1,3 +1,4 @@
+# Creates a ranked file from output of FunrichR
 output_dir <- "/home/workstation/Documents/Sarthak/gender_prognosis/analysis/bivariate_go/"
 dir_path <- "/home/workstation/Documents/Sarthak/gender_prognosis/analysis/bivariate_go/"
 library(stringr)

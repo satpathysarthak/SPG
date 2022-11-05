@@ -1,3 +1,4 @@
+# Counting ns_ns,s_ns,ns_s,s_s
 library(data.table)
 
 input_dir <- "/home/workstation/Documents/Sarthak/gender_prognosis/analysis/log_rank/"

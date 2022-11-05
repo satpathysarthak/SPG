@@ -1,4 +1,4 @@
-## Script to generate plots for Gene Expression
+## Script to generate plots for data exploration: ditribution for cencored and gender data`
 rm(list = ls())
 args<-commandArgs(TRUE)
 print(args)

@@ -1,3 +1,4 @@
+# Plots from processed GO analysis
 dir_path <- '/home/workstation/Documents/Sarthak/gender_prognosis/analysis/bivariate_go/reports_all'
 file_list <- list.files(dir_path, pattern= "BP.sub", all.files=FALSE,  full.names=FALSE)
 setwd(dir_path)

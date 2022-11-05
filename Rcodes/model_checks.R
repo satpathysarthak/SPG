@@ -1,3 +1,4 @@
+# Evaluates the models generated from bootstrap method
 rm(list = ls())
 
 library(data.table)

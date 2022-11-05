@@ -1,3 +1,4 @@
+# Correlation test and plots to estimate power of the experiment
 setwd("/home/workstation/Documents/Sarthak/gender_prognosis")
 setwd("/home/workstation/Documents/Sarthak/gender_prognosis/plots/20210122_power")
 library(data.table)

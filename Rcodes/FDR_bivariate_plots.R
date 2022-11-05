@@ -1,3 +1,4 @@
+# Plot female vs male beta for ns_ns,s_ns,ns_s,s_s
 library(data.table)
 library(ggplot2)
 library(ggrepel)

@@ -1,3 +1,4 @@
+# Creates a scatter plot male and female coefficients 
 library(data.table)
 library(ggplot2)
 input_dir <- "/home/workstation/Documents/Sarthak/gender_prognosis/cox_regression/bivariate_gender/"

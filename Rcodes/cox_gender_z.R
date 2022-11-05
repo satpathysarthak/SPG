@@ -1,4 +1,4 @@
-## Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
+## Script to perform Survival Analysis with Tumor data post z-score transformation using 2 models: Interaction and Estimated
 rm(list = ls())
 args<-commandArgs(TRUE)
 print(args)

@@ -1,4 +1,4 @@
-# plotting KM  plots
+# KM  plots for HNSC validation and training data
 
 #TCGA data
 

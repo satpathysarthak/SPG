@@ -1,3 +1,4 @@
+# Calculating overlap between Main-effect and Interaction model 
 setwd("/home/workstation/Documents/Sarthak/gender_prognosis/cox_regression/FDR_gender_zscore")
 
 outdir <- "/home/workstation/Documents/Sarthak/gender_prognosis/analysis/comp/est_int_overlap/"

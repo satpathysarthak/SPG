@@ -1,3 +1,4 @@
+# Heatmap for gene expression betwwen IDH status
 ## Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
 rm(list= ls())
 #args<-commandArgs(TRUE)

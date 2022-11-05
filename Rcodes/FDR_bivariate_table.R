@@ -1,3 +1,4 @@
+# Genes in the category: ns_ns,s_ns,ns_s,s_s
 library(data.table)
 library(ggplot2)
 input_dir <- "/home/workstation/Documents/Sarthak/gender_prognosis/cox_regression/bivariate_gender/"

@@ -1,3 +1,4 @@
+# Histogram of p-values from cox-regression
 input_dir <- "/media/sarthak/gender_prognosis/cox_regression/gender"
 input_files  <- list.files(input_dir,pattern = "_int.tab",full.names = TRUE)
 setwd("/media/sarthak/gender_prognosis/plots/20201112_pval_hist")

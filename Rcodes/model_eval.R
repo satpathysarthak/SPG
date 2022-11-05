@@ -1,3 +1,4 @@
+# Plots for evaluating prognosis signature model
 ## baplots
 library(data.table)
 library(ggplot2)
