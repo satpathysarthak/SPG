@@ -1,3 +1,4 @@
+# Script for plotting KM Plots`
 setwd("/media/sarthak/gender_prognosis")
 list_genes = c("ENSG00000144749.12","ENSG00000164292.11")
 library(plyr)
