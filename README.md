@@ -5,7 +5,7 @@ The repository contains Scripts and Processed Data for SPG manuscript.
 ## Cox Regression model results
 
 cox_regression/ has all the cox regression models.
-cox_regression/FDR_gender_zscore/ has the cox-regression model which 
+cox_regression/FDR_gender_zscore/ has the cox-regression model where the gene expression was z-score transformed and the subsequent interaction and main-effect models generated.
 
 ## Scripts
 
@@ -14,11 +14,11 @@ bivariate_GO_plots.R: Plots from processed GO analysis
 
 cox_gender_miR.R: Script automated for miR gender Cox proportional regression
 
-cox_gender.R: Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
+cox_gender.R: Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Main-effect
 
-cox_gender_z.R: Script to perform Survival Analysis with Tumor data post z-score transformation using 2 models: Interaction and Estimated
+cox_gender_z.R: Script to perform Survival Analysis with Tumor data post z-score transformation using 2 models: Interaction and Main-effect
 
-cox_menopausal.R: Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Estimated
+cox_menopausal.R: Script to perform Survival Analysis with Tumor data using 2 models: Interaction and Main-effect
 
 cox_uni_gender.R: Script to perform Survival Analysis with Tumor data using univariate models on subdata
 
